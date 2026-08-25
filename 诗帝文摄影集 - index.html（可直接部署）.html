@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="creative-medium" content="interactive-prototype">
+  <title>诗帝文 · SHIDI WEN — Photography</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap">
+  <style>
+/* ============================================
+   SHIDI WEN · Photography Portfolio
+   Minimal Dark · Amber Gold Accent
+   ============================================ */
+
+:root {
+  --bg: #0a0908;
+  --bg-elev: #111010;
+  --text: #f5efe6;
+  --text-dim: #a8a195;
+  --text-muted: #6b665d;
+  --accent: #cbb99a;
+  --accent-dim: #a89582;
+  --divider: rgba(203, 185, 154, 0.15);
+  --divider-strong: rgba(203, 185, 154, 0.25);
+  --font-display: 'Cormorant Garamond', Georgia, 'Noto Serif SC', 'Songti SC', serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ============================================
+   Navigation
+   ============================================ */
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition: background-color 0.4s var(--ease), backdrop-filter 0.4s var(--ease);
+}
+
+.nav-scrolled {
+  background-color: rgba(10, 9, 8, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 28px 48px;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-family: var(--font-display);
+}
+
+.brand-cn {
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--text);
+}
+
+.brand-en {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  text-transform: uppercase;
+  font-family: var(--font-body);
+}
+
+.nav-links {
+  display: flex;
+  gap: 48px;
+}
+
+.nav-link {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  color: var(--text-dim);
+  transition: color 0.3s var(--ease);
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--accent);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--accent);
+  transition: width 0.3s var(--ease);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--divider), transparent);
+  margin: 0 48px;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+}
+
+.nav-scrolled .nav-divider {
+  opacity: 1;
+}
+
+.nav-menu-btn {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav-menu-btn span {
+  display: block;
+  width: 24px;
+  height: 1px;
+  background-color: var(--text);
+  transition: all 0.3s var(--ease);
+}
+
+body.menu-open .nav-menu-btn span:first-child {
+  transform: translateY(7px) rotate(45deg);
+}
+
+body.menu-open .nav-menu-btn span:last-child {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg);
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s var(--ease), visibility 0.4s var(--ease);
+}
+
+body.menu-open .mobile-menu {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-menu-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  text-align: center;
+}
+
+.mobile-link {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  color: var(--text);
+  transition: color 0.3s var(--ease);
+}
+
+.mobile-link:hover {
+  color: var(--accent);
+}
+
+/* ============================================
+   Hero Section
+   ============================================ */
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 640px;
+  overflow: hidden;
+}
+
+.hero-image {
+  position: absolute;
+  inset: 0;
+  cursor: zoom-in;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, var(--bg) 0%, rgba(10, 9, 8, 0.6) 35%, rgba(10, 9, 8, 0.2) 60%, transparent 100%),
+    linear-gradient(to bottom, rgba(10, 9, 8, 0.4) 0%, transparent 30%);
+}
+
+.hero-content {
+  position: absolute;
+  bottom: 15%;
+  left: 0;
+  right: 0;
+  padding: 0 48px;
+  max-width: 1440px;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+.hero-eyebrow {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  color: var(--accent);
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 8vw, 120px);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 28px;
+  text-wrap: pretty;
+}
+
+.hero-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.hero-desc {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.8;
+  max-width: 480px;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 40px;
+  right: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  z-index: 2;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, var(--accent));
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+.scroll-text {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.6); transform-origin: top; }
+  50% { opacity: 1; transform: scaleY(1); transform-origin: top; }
+}
+
+/* ============================================
+   Section Base
+   ============================================ */
+
+.section {
+  padding: 140px 48px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.section-eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.35em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+
+.section-desc {
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--divider-strong), transparent);
+  margin-bottom: 100px;
+}
+
+/* ============================================
+   Works Grid
+   ============================================ */
+
+.works-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.selected-grid {
+  grid-template-columns: 1.4fr 1fr 1fr;
+  grid-auto-rows: minmax(320px, auto);
+}
+
+.selected-grid .card-large {
+  grid-row: span 2;
+}
+
+.stories-grid {
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 420px;
+}
+
+/* Work Card */
+.work-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+  cursor: zoom-in;
+  display: block;
+}
+
+.card-image {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.8s var(--ease), filter 0.6s var(--ease);
+  filter: contrast(0.95) brightness(0.85);
+}
+
+.work-card:hover .card-image img {
+  transform: scale(1.05);
+  filter: contrast(1.05) brightness(0.95);
+}
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10, 9, 8, 0.85) 0%, rgba(10, 9, 8, 0.3) 40%, transparent 70%);
+  z-index: 1;
+  transition: opacity 0.4s var(--ease);
+}
+
+.work-card:hover .card-overlay {
+  background: linear-gradient(to top, rgba(10, 9, 8, 0.9) 0%, rgba(10, 9, 8, 0.4) 45%, transparent 75%);
+}
+
+.card-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 36px 32px;
+  z-index: 2;
+}
+
+.card-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+
+.card-tags {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+/* ============================================
+   About Section
+   ============================================ */
+
+.about-section {
+  padding-top: 80px;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 120px;
+  align-items: start;
+}
+
+.about-left .section-eyebrow {
+  display: block;
+  margin-bottom: 40px;
+}
+
+.about-quote {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 300;
+  line-height: 1.3;
+  color: var(--text);
+  letter-spacing: -0.005em;
+  text-wrap: pretty;
+}
+
+.about-quote em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.about-right {
+  padding-top: 8px;
+}
+
+.about-text {
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 2;
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+
+.about-text:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================
+   Contact Section
+   ============================================ */
+
+.contact-section {
+  padding-top: 80px;
+  padding-bottom: 60px;
+}
+
+.contact-content {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contact-content .section-eyebrow {
+  display: block;
+  margin-bottom: 32px;
+}
+
+.contact-title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 32px;
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+}
+
+.contact-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.contact-desc {
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.8;
+  font-weight: 300;
+  margin-bottom: 56px;
+}
+
+.contact-methods {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 80px;
+  flex-wrap: wrap;
+}
+
+.contact-method {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.method-eyebrow {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.35em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.method-email {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.2vw, 26px);
+  font-weight: 400;
+  color: var(--text);
+  border-bottom: 1px solid var(--text);
+  padding-bottom: 4px;
+  transition: all 0.3s var(--ease);
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  margin-top: 12px;
+}
+
+.method-email:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.method-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  margin-top: 4px;
+}
+
+.qr-card {
+  background-color: #f5efe6;
+  padding: 14px;
+  border-radius: 6px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 1px 0 rgba(203, 185, 154, 0.1);
+  border: 1px solid rgba(203, 185, 154, 0.2);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+  margin-top: 8px;
+}
+
+.qr-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(203, 185, 154, 0.15);
+}
+
+.qr-image {
+  width: 200px;
+  height: auto;
+  display: block;
+  border-radius: 2px;
+}
+
+/* Footer */
+.footer {
+  margin-top: 120px;
+}
+
+.footer-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--divider), transparent);
+  margin-bottom: 32px;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+.footer-copy {
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+/* ============================================
+   Reveal Animations
+   ============================================ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.works-grid .work-card:nth-child(1).reveal { transition-delay: 0s; }
+.works-grid .work-card:nth-child(2).reveal { transition-delay: 0.1s; }
+.works-grid .work-card:nth-child(3).reveal { transition-delay: 0.2s; }
+
+/* ============================================
+   Lightbox
+   ============================================ */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s var(--ease), visibility 0.35s var(--ease);
+}
+
+.lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.lightbox-content {
+  position: relative;
+  z-index: 2;
+  max-width: 94vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  transform: scale(0.96);
+  transition: transform 0.35s var(--ease);
+}
+
+.lightbox.is-open .lightbox-content {
+  transform: scale(1);
+}
+
+.lightbox-image {
+  max-width: 94vw;
+  max-height: 82vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 2px;
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6);
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.lightbox-caption {
+  font-size: 13px;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+  text-align: center;
+  max-width: 80vw;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  z-index: 3;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  border-radius: 50%;
+  transition: color 0.25s var(--ease), background-color 0.25s var(--ease);
+}
+
+.lightbox-close:hover {
+  color: var(--accent);
+  background-color: rgba(203, 185, 154, 0.08);
+}
+
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  transition: color 0.25s var(--ease), background-color 0.25s var(--ease);
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  color: var(--accent);
+  background-color: rgba(203, 185, 154, 0.08);
+}
+
+.lightbox-prev { left: 32px; }
+.lightbox-next { right: 32px; }
+
+.lightbox-counter {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+}
+
+body.lightbox-open {
+  overflow: hidden;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .nav-inner { padding: 24px 32px; }
+  .nav-divider { margin: 0 32px; }
+  .hero-content { padding: 0 32px; bottom: 12%; }
+  .hero-scroll { right: 32px; }
+  .section { padding: 100px 32px; }
+
+  .selected-grid {
+    grid-template-columns: 1.2fr 1fr;
+    grid-auto-rows: 280px;
+  }
+  .selected-grid .card-large { grid-row: span 2; }
+  .selected-grid .work-card:nth-child(3) {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  .stories-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 360px;
+  }
+  .stories-grid .work-card:nth-child(3) { grid-column: span 2; }
+
+  .about-content { gap: 60px; }
+}
+
+@media (max-width: 768px) {
+  .nav-inner { padding: 20px 24px; }
+  .nav-links { display: none; }
+  .nav-menu-btn { display: flex; }
+  .nav-divider { margin: 0 24px; }
+  .brand-cn { font-size: 18px; }
+  .brand-en { display: none; }
+
+  .hero { min-height: 560px; }
+  .hero-content { padding: 0 24px; bottom: 10%; }
+  .hero-eyebrow { font-size: 10px; margin-bottom: 16px; letter-spacing: 0.25em; }
+  .hero-desc { font-size: 13px; max-width: 100%; }
+  .hero-scroll { display: none; }
+
+  .section { padding: 80px 24px; }
+  .section-header { margin-bottom: 56px; }
+  .section-divider { margin-bottom: 72px; }
+
+  .selected-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 280px;
+  }
+  .selected-grid .card-large {
+    grid-row: span 1;
+    min-height: 400px;
+  }
+  .selected-grid .work-card:nth-child(3) { grid-column: span 1; }
+
+  .stories-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 320px;
+  }
+  .stories-grid .work-card:nth-child(3) { grid-column: span 1; }
+
+  .card-info { padding: 28px 24px; }
+  .card-title { font-size: 24px; }
+  .card-tags { font-size: 9px; letter-spacing: 0.2em; }
+
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .about-quote { font-size: 28px; }
+  .about-left .section-eyebrow { margin-bottom: 28px; }
+
+  .contact-content .section-eyebrow { margin-bottom: 24px; }
+  .contact-desc { margin-bottom: 40px; }
+  .contact-methods {
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+  }
+  .qr-image { width: 180px; }
+
+  .footer { margin-top: 80px; }
+  .footer-inner {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  /* Lightbox Mobile */
+  .lightbox-close {
+    top: 16px; right: 16px;
+    width: 40px; height: 40px;
+  }
+  .lightbox-prev {
+    left: 8px;
+    width: 44px; height: 44px;
+  }
+  .lightbox-next {
+    right: 8px;
+    width: 44px; height: 44px;
+  }
+  .lightbox-caption { font-size: 12px; padding: 0 16px; }
+  .lightbox-counter { bottom: 16px; font-size: 11px; }
+  .lightbox-image { max-height: 78vh; }
+}
+
+@media (max-width: 480px) {
+  .hero-title { font-size: 44px; }
+  .section-title { font-size: 32px; }
+  .contact-title { font-size: 36px; }
+}
+
+/* ============================================
+   Reduced Motion
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; }
+}
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-brand">
+        <span class="brand-cn">诗帝文</span>
+        <span class="brand-en">SHIDI WEN</span>
+      </a>
+      <div class="nav-links">
+        <a href="#works" class="nav-link">WORKS</a>
+        <a href="#about" class="nav-link">ABOUT</a>
+        <a href="#contact" class="nav-link">CONTACT</a>
+      </div>
+      <button class="nav-menu-btn" id="menuBtn" aria-label="Menu">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="nav-divider"></div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-inner">
+      <a href="#works" class="mobile-link">WORKS</a>
+      <a href="#about" class="mobile-link">ABOUT</a>
+      <a href="#contact" class="mobile-link">CONTACT</a>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-image lightbox-trigger" data-lightbox-index="0" data-caption="Quiet Night">
+      <img src="https://aka.doubaocdn.com/s/JKH0VmQwMe" alt="Night street lamp warm light" class="hero-img">
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">PHOTOGRAPHY · VISUAL STORYTELLING</p>
+      <h1 class="hero-title">Quiet moments.<br><em>Strong images.</em></h1>
+      <p class="hero-desc">用镜头记录城市与自然中那些稍纵即逝的光与影，<br>在平凡里寻找诗意，在寂静中听见回响。</p>
+    </div>
+    <div class="hero-scroll">
+      <span class="scroll-line"></span>
+      <span class="scroll-text">SCROLL</span>
+    </div>
+  </section>
+
+  <!-- Selected Works -->
+  <section class="section" id="works">
+    <div class="section-header">
+      <span class="section-eyebrow">SELECTED WORKS</span>
+      <h2 class="section-title">精选作品</h2>
+      <p class="section-desc">每一张照片都是一个被凝固的瞬间，<br>光线、情绪与故事在画面中静静流淌。</p>
+    </div>
+    <div class="works-grid selected-grid">
+      <a href="#" class="work-card card-large lightbox-trigger" data-lightbox-index="1">
+        <div class="card-image">
+          <img src="https://aka.doubaocdn.com/s/SzzMfvBLP3" alt="River bridge at night">
+        </div>
+        <div class="card-overlay"></div>
+        <div class="card-info">
+          <h3 class="card-title">River Crossing</h3>
+          <p class="card-tags">URBAN · NIGHT · REFLECTION</p>
+        </div>
+      </a>
+      <a href="#" class="work-card lightbox-trigger" data-lightbox-index="2">
+        <div class="card-image">
+          <img src="https://aka.doubaocdn.com/s/t45IkjX9LL" alt="Gothic church architecture">
+        </div>
+        <div class="card-overlay"></div>
+        <div class="card-info">
+          <h3 class="card-title">Sacred Light</h3>
+          <p class="card-tags">ARCHITECTURE · DAYLIGHT · GOTHIC</p>
+        </div>
+      </a>
+      <a href="#" class="work-card lightbox-trigger" data-lightbox-index="3">
+        <div class="card-image">
+          <img src="https://aka.doubaocdn.com/s/Ca8tNdm8u2" alt="Street lamp and old building">
+        </div>
+        <div class="card-overlay"></div>
+        <div class="card-info">
+          <h3 class="card-title">Warm Glow</h3>
+          <p class="card-tags">ARCHITECTURE · NIGHT · AMBIANCE</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- More Stories -->
+  <section class="section" id="stories">
+    <div class="section-header">
+      <span class="section-eyebrow">MORE STORIES</span>
+      <h2 class="section-title">更多作品</h2>
+      <p class="section-desc">城市街角、自然光影，<br>那些未被注意却动人的日常。</p>
+    </div>
+    <div class="works-grid stories-grid">
+      <a href="#" class="work-card lightbox-trigger" data-lightbox-index="4">
+        <div class="card-image">
+          <img src="https://aka.doubaocdn.com/s/oUMUJvj5wp" alt="Street cat at night">
+        </div>
+        <div class="card-overlay"></div>
+        <div class="card-info">
+          <h3 class="card-title">Night Wanderer</h3>
+          <p class="card-tags">STREET · CAT · WARM LIGHT</p>
+        </div>
+      </a>
+      <a href="#" class="work-card lightbox-trigger" data-lightbox-index="5">
+        <div class="card-image">
+          <img src="https://aka.doubaocdn.com/s/4zbwlfycCv" alt="Tree lined street with people">
+        </div>
+        <div class="card-overlay"></div>
+        <div class="card-info">
+          <h3 class="card-title">Afternoon Promenade</h3>
+          <p class="card-tags">STREET · LIFE · SHADOWS</p>
+        </div>
+      </a>
+      <a href="#" class="work-card lightbox-trigger" data-lightbox-index="6">
+        <div class="card-image">
+          <img src="https://aka.doubaocdn.com/s/V6lFRVqfwu" alt="Green leaves in natural light">
+        </div>
+        <div class="card-overlay"></div>
+        <div class="card-info">
+          <h3 class="card-title">Whispers of Green</h3>
+          <p class="card-tags">NATURE · LIGHT · FOLIAGE</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section about-section" id="about">
+    <div class="section-divider"></div>
+    <div class="about-content">
+      <div class="about-left">
+        <span class="section-eyebrow">ABOUT</span>
+        <p class="about-quote">
+          "I photograph not what is seen,<br>
+          but what <em>remains</em> after the glance —<br>
+          the quiet weight of light, the<br>
+          patience of shadows."
+        </p>
+      </div>
+      <div class="about-right">
+        <p class="about-text">
+          诗帝文，独立摄影师，专注于城市街拍、建筑与自然光影摄影。
+          作品追求安静克制的美学，在日常场景中捕捉光与影的微妙平衡。
+        </p>
+        <p class="about-text">
+          从夜幕下的城市灯火到午后斑驳的树影，从老建筑的肌理到街角的生命温度——
+          每一帧画面都是一次凝视，一次与时间的对话。
+        </p>
+        <p class="about-text">
+          现居广州，长期接受商业拍摄合作与个人约拍。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section contact-section" id="contact">
+    <div class="section-divider"></div>
+    <div class="contact-content">
+      <span class="section-eyebrow">CONTACT</span>
+      <h2 class="contact-title">Let's create something<br><em>worth keeping.</em></h2>
+      <p class="contact-desc">
+        无论是商业拍摄、作品合作还是单纯想聊聊摄影，<br>
+        都欢迎通过以下方式与我取得联系。
+      </p>
+      <div class="contact-methods">
+        <div class="contact-method">
+          <span class="method-eyebrow">EMAIL</span>
+          <a href="mailto:1007494980@qq.com" class="method-email">1007494980@qq.com</a>
+          <p class="method-desc">邮件咨询，24小时内回复</p>
+        </div>
+        <div class="contact-method">
+          <span class="method-eyebrow">WECHAT</span>
+          <div class="qr-card">
+            <img src="https://aka.doubaocdn.com/s/qzOtTdlgUv" alt="微信二维码" class="qr-image">
+          </div>
+          <p class="method-desc">扫码添加微信，欢迎摄影交流与合作</p>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="footer-divider"></div>
+      <div class="footer-inner">
+        <span class="footer-brand">诗帝文 · SHIDI WEN</span>
+        <span class="footer-copy">© 2024 All rights reserved.</span>
+      </div>
+    </footer>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-backdrop"></div>
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+        <line x1="6" y1="6" x2="18" y2="18"/>
+        <line x1="18" y1="6" x2="6" y2="18"/>
+      </svg>
+    </button>
+    <button class="lightbox-prev" id="lightboxPrev" aria-label="Previous">
+      <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+    </button>
+    <button class="lightbox-next" id="lightboxNext" aria-label="Next">
+      <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6"/>
+      </svg>
+    </button>
+    <div class="lightbox-content">
+      <img src="" alt="" class="lightbox-image" id="lightboxImage">
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+    <div class="lightbox-counter" id="lightboxCounter"></div>
+  </div>
+
+  <script>
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          document.body.classList.remove('menu-open');
+        }
+      });
+    });
+
+    // Mobile menu toggle
+    var menuBtn = document.getElementById('menuBtn');
+    menuBtn.addEventListener('click', function() {
+      document.body.classList.toggle('menu-open');
+    });
+
+    // Nav background on scroll
+    var nav = document.getElementById('nav');
+    window.addEventListener('scroll', function() {
+      if (window.pageYOffset > 100) {
+        nav.classList.add('nav-scrolled');
+      } else {
+        nav.classList.remove('nav-scrolled');
+      }
+    }, { passive: true });
+
+    // Reveal animations on scroll
+    var observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) entry.target.classList.add('is-visible');
+      });
+    }, observerOptions);
+    document.querySelectorAll('.section-header, .work-card, .about-left, .about-right, .contact-content').forEach(function(el) {
+      el.classList.add('reveal');
+      observer.observe(el);
+    });
+
+    // Image lazy loading
+    document.querySelectorAll('img').forEach(function(img) { img.loading = 'lazy'; });
+
+    // ============================================
+    // Lightbox
+    // ============================================
+    (function() {
+      var lightbox = document.getElementById('lightbox');
+      var lightboxImage = document.getElementById('lightboxImage');
+      var lightboxCaption = document.getElementById('lightboxCaption');
+      var lightboxCounter = document.getElementById('lightboxCounter');
+      var closeBtn = document.getElementById('lightboxClose');
+      var prevBtn = document.getElementById('lightboxPrev');
+      var nextBtn = document.getElementById('lightboxNext');
+      var triggers = Array.from(document.querySelectorAll('.lightbox-trigger'));
+      var currentIndex = 0;
+
+      function getImageData(trigger) {
+        var img = trigger.querySelector('img');
+        var caption = trigger.getAttribute('data-caption')
+          || (trigger.querySelector('.card-title') ? trigger.querySelector('.card-title').textContent : '')
+          || img.alt || '';
+        return { src: img.src, alt: img.alt || '', caption: caption };
+      }
+
+      function openLightbox(index) {
+        currentIndex = index;
+        var data = getImageData(triggers[currentIndex]);
+        lightboxImage.src = data.src;
+        lightboxImage.alt = data.alt;
+        lightboxCaption.textContent = data.caption;
+        lightboxCounter.textContent = (currentIndex + 1) + ' / ' + triggers.length;
+        lightbox.classList.add('is-open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('lightbox-open');
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('lightbox-open');
+      }
+
+      function showPrev() {
+        currentIndex = (currentIndex - 1 + triggers.length) % triggers.length;
+        var data = getImageData(triggers[currentIndex]);
+        lightboxImage.style.opacity = '0';
+        lightboxImage.style.transform = 'scale(0.98)';
+        setTimeout(function() {
+          lightboxImage.src = data.src;
+          lightboxImage.alt = data.alt;
+          lightboxCaption.textContent = data.caption;
+          lightboxCounter.textContent = (currentIndex + 1) + ' / ' + triggers.length;
+          lightboxImage.style.opacity = '1';
+          lightboxImage.style.transform = 'scale(1)';
+        }, 150);
+      }
+
+      function showNext() {
+        currentIndex = (currentIndex + 1) % triggers.length;
+        var data = getImageData(triggers[currentIndex]);
+        lightboxImage.style.opacity = '0';
+        lightboxImage.style.transform = 'scale(0.98)';
+        setTimeout(function() {
+          lightboxImage.src = data.src;
+          lightboxImage.alt = data.alt;
+          lightboxCaption.textContent = data.caption;
+          lightboxCounter.textContent = (currentIndex + 1) + ' / ' + triggers.length;
+          lightboxImage.style.opacity = '1';
+          lightboxImage.style.transform = 'scale(1)';
+        }, 150);
+      }
+
+      lightboxImage.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+
+      triggers.forEach(function(trigger, index) {
+        trigger.addEventListener('click', function(e) {
+          e.preventDefault();
+          openLightbox(index);
+        });
+      });
+
+      closeBtn.addEventListener('click', closeLightbox);
+      lightbox.querySelector('.lightbox-backdrop').addEventListener('click', closeLightbox);
+      prevBtn.addEventListener('click', function(e) { e.stopPropagation(); showPrev(); });
+      nextBtn.addEventListener('click', function(e) { e.stopPropagation(); showNext(); });
+
+      document.addEventListener('keydown', function(e) {
+        if (!lightbox.classList.contains('is-open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') showPrev();
+        if (e.key === 'ArrowRight') showNext();
+      });
+    })();
+  </script>
+</body>
+</html>
