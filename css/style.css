@@ -24,6 +24,38 @@ a { color:inherit; }
 .nav a {
   text-decoration:none; color:#aaa; font-size:12px; letter-spacing:2px;
 }
+
+.nav-dropdown {
+  position:relative;
+}
+.nav-dropdown summary {
+  list-style:none;
+  cursor:pointer;
+  color:#aaa;
+  font-size:12px;
+  letter-spacing:2px;
+}
+.nav-dropdown summary::-webkit-details-marker { display:none; }
+.dropdown-menu {
+  position:absolute;
+  top:24px;
+  left:0;
+  z-index:20;
+  display:none;
+  min-width:180px;
+  padding:10px;
+  background:#0d0d0d;
+  border:1px solid var(--line);
+  box-shadow:0 14px 32px rgba(0,0,0,.35);
+}
+.nav-dropdown[open] .dropdown-menu { display:grid; gap:4px; }
+.dropdown-menu a {
+  display:block;
+  padding:10px 12px;
+  white-space:nowrap;
+}
+.dropdown-menu a:hover { color:var(--text); background:#171717; }
+
 .hero {
   margin-top:24px; min-height:660px; position:relative; overflow:hidden;
   display:flex; align-items:flex-end; padding:58px;
@@ -85,26 +117,30 @@ h1,h2,h3 { font-family:Georgia,serif; font-weight:500; }
 .gallery .c { grid-column:span 5; aspect-ratio:4/5; }
 .gallery .d { grid-column:span 7; aspect-ratio:16/9; }
 
-.summer-gallery {
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:18px;
+
+
+.summer-page {
+  padding-top:36px;
 }
-.summer-photo {
+.summer-page-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+.summer-page-grid figure {
   margin:0;
   overflow:hidden;
-  position:relative;
   background:#111;
   aspect-ratio:4/3;
 }
-.summer-photo img {
+.summer-page-grid img {
   width:100%;
   height:100%;
-  object-fit:cover;
   display:block;
-  transition:transform .55s ease, filter .55s ease;
+  object-fit:cover;
+  transition:transform .45s ease, filter .45s ease;
 }
-.summer-photo:hover img {
+.summer-page-grid figure:hover img {
   transform:scale(1.025);
   filter:contrast(1.03);
 }
@@ -138,6 +174,7 @@ h1,h2,h3 { font-family:Georgia,serif; font-weight:500; }
   .hero { min-height:560px; padding:38px; }
 }
 @media (max-width:640px) {
+  .summer-page-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
   .site { padding:18px 16px 45px; }
   .topbar { align-items:flex-start; }
   .nav { gap:12px; }
@@ -153,7 +190,4 @@ h1,h2,h3 { font-family:Georgia,serif; font-weight:500; }
   .gallery { grid-template-columns:1fr; }
   .gallery .a,.gallery .b,.gallery .c,.gallery .d { grid-column:auto; aspect-ratio:auto; }
   .gallery figure img { height:auto; }
-  .summer-gallery { grid-template-columns:1fr; }
-  .summer-photo { width:100%; aspect-ratio:4/3; }
-  .summer-photo img { width:100%; height:100%; object-fit:cover; }
 }
