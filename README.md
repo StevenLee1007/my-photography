@@ -1,4 +1,4 @@
-# SHIDI WEN Photography Portfolio
+# Steven Lee Photography Portfolio
 
 诗帝文的个人摄影作品集网站。
 
