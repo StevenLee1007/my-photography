@@ -159,7 +159,7 @@ h1,h2,h3 { font-family:Georgia,serif; font-weight:500; }
 .caption span { color:#c8c8c8; font-size:11px; letter-spacing:2px; display:block; margin-top:8px; }
 .gallery {
   display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-template-columns:repeat(4,minmax(0,1fr));
   gap:18px;
 }
 .gallery figure {
@@ -167,7 +167,7 @@ h1,h2,h3 { font-family:Georgia,serif; font-weight:500; }
   position:relative;
   overflow:hidden;
   background:#111;
-  aspect-ratio:4/3;
+  aspect-ratio:4/5;
 }
 .gallery figure img {
   width:100%;
@@ -316,4 +316,5 @@ h1,h2,h3 { font-family:Georgia,serif; font-weight:500; }
     grid-template-columns:repeat(2,minmax(0,1fr));
     gap:10px;
   }
+  .gallery figure { aspect-ratio:4/3; }
 }
