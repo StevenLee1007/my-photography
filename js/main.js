@@ -30,12 +30,13 @@ document.addEventListener('click', event => {
 
 const box = document.getElementById('lightbox');
 const boxImg = document.getElementById('lightboxImg');
-document.querySelectorAll('.clickable').forEach(img => {
-  img.addEventListener('click', () => {
-    boxImg.src = img.src;
-    box.classList.add('open');
-    box.setAttribute('aria-hidden','false');
-  });
+document.addEventListener('click', event => {
+  const img = event.target.closest('img.clickable');
+  if (!img) return;
+  boxImg.src = img.src;
+  boxImg.alt = img.alt;
+  box.classList.add('open');
+  box.setAttribute('aria-hidden', 'false');
 });
 function closeBox() {
   box.classList.remove('open');
@@ -50,3 +51,4 @@ document.addEventListener('keydown', e => {
     closeNavDropdowns();
   }
 });
+

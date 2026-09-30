@@ -1,5 +1,9 @@
 # Steven Lee Photography Portfolio
 
+摄影管理页面：<https://stevenlee.uk/admin.html>。
+
+已加入相册、照片上传、排序、封面和排版管理。正式登录与云端发布需先完成 [后台开通说明](worker/SETUP.md)；未接通时可查看明确标注的页面操作演示。GitHub Pages 保留现有作品展示，R2 + Worker 负责日后的内容管理。
+
 诗帝文的个人摄影作品集网站。
 
 ## 文件结构

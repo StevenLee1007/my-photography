@@ -1,0 +1,9 @@
+{
+  "name": "stevenlee-gallery-api",
+  "main": "index.js",
+  "compatibility_date": "2026-09-30",
+  "workers_dev": false,
+  "routes": [{ "pattern": "api.stevenlee.uk", "custom_domain": true }],
+  "r2_buckets": [{ "binding": "PHOTOS", "bucket_name": "stevenlee-photos" }],
+  "ratelimits": [{ "name": "LOGIN_LIMIT", "namespace_id": "742901", "simple": { "limit": 5, "period": 60 } }]
+}

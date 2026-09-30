@@ -1,0 +1,183 @@
+{
+  "version": 1,
+  "albums": [
+    {
+      "id": "works",
+      "title": "Selected Works",
+      "description": "以街头观察、城市夜景与建筑摄影为主，把不同时间和光线下的城市切片组合成一个完整作品集。",
+      "layout": "featured",
+      "section": "works",
+      "cover": "works-0",
+      "photos": [
+        {
+          "id": "works-0",
+          "src": "images/street-cat.jpg",
+          "title": "Street Life",
+          "alt": "街头猫咪摄影"
+        },
+        {
+          "id": "works-1",
+          "src": "images/city-river-night.jpg",
+          "title": "Night Walk",
+          "alt": "城市河岸夜景"
+        },
+        {
+          "id": "works-2",
+          "src": "images/heritage-lamp.jpg",
+          "title": "Architecture",
+          "alt": "建筑与路灯"
+        }
+      ]
+    },
+    {
+      "id": "stories",
+      "title": "More Stories",
+      "description": "绿叶、树荫、人群和老建筑——这些并不是宏大的主题，但它们构成了城市最真实的气息。",
+      "layout": "grid",
+      "section": "stories",
+      "cover": "stories-0",
+      "photos": [
+        {
+          "id": "stories-0",
+          "src": "images/sunlit-leaves.jpg",
+          "title": "",
+          "alt": "阳光下的绿叶"
+        },
+        {
+          "id": "stories-1",
+          "src": "images/church-architecture.jpg",
+          "title": "",
+          "alt": "教堂建筑"
+        },
+        {
+          "id": "stories-2",
+          "src": "images/tree-lined-street.jpg",
+          "title": "",
+          "alt": "林荫街道人群"
+        },
+        {
+          "id": "stories-3",
+          "src": "images/stories/guangzhou-riverside.webp",
+          "title": "",
+          "alt": "广州江岸与城市天际线"
+        },
+        {
+          "id": "stories-4",
+          "src": "images/stories/canton-tower-night.webp",
+          "title": "",
+          "alt": "广州塔与珠江夜景"
+        },
+        {
+          "id": "stories-5",
+          "src": "images/stories/green-fern.webp",
+          "title": "",
+          "alt": "光影中的绿色蕨叶"
+        },
+        {
+          "id": "stories-6",
+          "src": "images/stories/tropical-path.webp",
+          "title": "",
+          "alt": "热带植物间的小径"
+        }
+      ]
+    },
+    {
+      "id": "summer",
+      "title": "Summer",
+      "description": "盛夏的树荫、草地与藤架，让强烈的阳光在绿色之间留下安静而清晰的层次。",
+      "layout": "grid",
+      "section": "works",
+      "cover": "summer-0",
+      "photos": [
+        {
+          "id": "summer-0",
+          "src": "images/summer/summer-canopy.jpg",
+          "title": "",
+          "alt": "仰望盛夏树冠与枝叶"
+        },
+        {
+          "id": "summer-1",
+          "src": "images/summer/summer-grove-sunlight.jpg",
+          "title": "",
+          "alt": "夕阳穿过夏日树林"
+        },
+        {
+          "id": "summer-2",
+          "src": "images/summer/summer-grass-light.jpg",
+          "title": "",
+          "alt": "树影下明暗交错的草地"
+        },
+        {
+          "id": "summer-3",
+          "src": "images/summer/summer-green-arcade.jpg",
+          "title": "",
+          "alt": "被绿叶覆盖的弧形藤架"
+        },
+        {
+          "id": "summer-4",
+          "src": "images/summer/summer-leaves-sky.jpg",
+          "title": "",
+          "alt": "蓝天下舒展的夏日绿叶"
+        }
+      ]
+    },
+    {
+      "id": "shantou",
+      "title": "Shantou",
+      "description": "海风、轮渡与老街。沿着汕头的水岸和街巷，记录城市在新旧交错之间留下的日常温度。",
+      "layout": "grid",
+      "section": "stories",
+      "cover": "shantou-0",
+      "photos": [
+        {
+          "id": "shantou-0",
+          "src": "images/shantou/shantou-waterfront-series.webp",
+          "title": "",
+          "alt": "汕头海滨与长椅系列作品"
+        },
+        {
+          "id": "shantou-1",
+          "src": "images/shantou/shantou-overlook-series.webp",
+          "title": "",
+          "alt": "从礐石眺望汕头城市与海湾"
+        },
+        {
+          "id": "shantou-2",
+          "src": "images/shantou/shantou-ferry-series.webp",
+          "title": "",
+          "alt": "汕头轮渡与船上旅客系列作品"
+        },
+        {
+          "id": "shantou-3",
+          "src": "images/shantou/shantou-old-street-day-night.webp",
+          "title": "",
+          "alt": "汕头小公园老街昼夜对照"
+        },
+        {
+          "id": "shantou-4",
+          "src": "images/shantou/shantou-shops-series.webp",
+          "title": "",
+          "alt": "汕头老街店铺与市井色彩"
+        },
+        {
+          "id": "shantou-5",
+          "src": "images/shantou/shantou-food-street-series.webp",
+          "title": "",
+          "alt": "汕头街头美食与骑楼店铺"
+        },
+        {
+          "id": "shantou-6",
+          "src": "images/shantou/shantou-market-series.webp",
+          "title": "",
+          "alt": "汕头潮式茶点与街头人群"
+        },
+        {
+          "id": "shantou-7",
+          "src": "images/shantou/shantou-reflections-series.webp",
+          "title": "",
+          "alt": "汕头街区建筑与水面倒影"
+        }
+      ]
+    }
+  ]
+}

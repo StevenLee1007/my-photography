@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><title>摄影管理 — Steven Lee</title><link rel="stylesheet" href="css/admin.css"></head>
+<body>
+<header class="admin-top"><a class="brand" href="index.html">Steven Lee <span>摄影管理</span></a><a href="index.html" target="_blank" rel="noopener">浏览网站 ↗</a></header>
+<main>
+  <section id="welcome" class="welcome">
+    <div class="eyebrow">YOUR PHOTOGRAPHIC JOURNAL</div><h1>把新的瞬间，<br>放进你的作品集。</h1>
+    <p>上传照片，整理相册，选择排版。保存并发布后，访客就能在网站上看到。</p>
+    <p id="connection" role="status">正在连接管理后台…</p>
+    <form id="login" hidden><label>管理密码<input id="password" type="password" autocomplete="current-password" required></label><button type="submit">登录管理</button></form>
+    <div id="setup" hidden class="notice">云端管理尚未接通。需要先开通 R2 并部署后台，才能登录、上传和保存。<a href="https://github.com/StevenLee1007/my-photography/blob/main/worker/SETUP.md" target="_blank" rel="noopener">查看开通说明 ↗</a></div>
+    <button id="demo" class="secondary" type="button">查看操作演示</button>
+  </section>
+  <section id="workspace" hidden>
+    <div class="workspace-head"><div><div class="eyebrow">COLLECTIONS</div><h1>我的相册</h1></div><div class="actions"><button id="add-album" class="secondary">＋ 创建相册</button><button id="save">保存并发布</button><button id="exit" class="secondary">退出</button></div></div>
+    <p id="status" class="notice" role="status" aria-live="polite"></p>
+    <div class="workspace-grid"><aside><div id="album-list"></div><p class="hint">↑ ↓ 调整相册展示顺序。<br>照片修改会在保存后公开展示。</p></aside>
+      <section id="editor"></section>
+    </div>
+  </section>
+</main><script type="module" src="js/admin.js"></script>
+</body></html>
